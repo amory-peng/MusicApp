@@ -1,0 +1,11 @@
+<h1>SIGN UP FOR MUSIC APP</h1>
+
+<form class="" action=" <%= users_url %>" method="post">
+  <input type="hidden" name="authenticity_token" value=" <%= form_authenticity_token %>">
+  
+  <input type="text" name="user[email]" value="">email
+  <br>
+  <input type="text" name="user[password]" value="">password
+  <br>
+  <input type="submit" name="" value="Sign Up!">
+</form>

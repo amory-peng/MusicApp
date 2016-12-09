@@ -1,0 +1,15 @@
+<h1>EDIT ALBUM: <%= @album.name %></h1>
+
+<form class="" action=" <%= album_url(@album) %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <input type="hidden" name="authenticity_token" value=" <%= form_authenticity_token %>">
+  <select name="album[band_id]">
+    <% Band.all.each do |band| %>
+      <option value=" <%= band.id %>" <%= @album.band.id == band.id ? "selected" : nil %>> <%= band.name %></option>
+    <% end %>
+  </select>
+  <input type="text" name="album[name]" value="<%= @album.name %>">name
+  <input type="radio" name="album[studio]" value="false" checked>live
+  <input type="radio" name="album[studio]" value="true" >studio
+  <input type="submit" name="" value="submit">
+</form>

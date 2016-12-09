@@ -1,0 +1,24 @@
+<br>
+
+<h2> ALBUM: <%= @track.album.name %> </h2>
+<h2> TRACK TITLE: <%= @track.title %> </h2>
+<p><%= ugly_lyrics(@track.lyrics) %></p>
+
+<%= link_to "edit track", edit_track_url(@track) %>
+<%= button_to "delete track", track_url(@track), method: :delete %>
+<%= link_to "go back to album", album_url(@track.album.id) %>
+
+<h2>NOTES:</h2>
+<ul>
+  <% @track.notes.each do |note| %>
+    <li> <%= note.user.email %> said: <%= note.text_notes %>
+      <% if current_user.id == note.user_id %>
+        <%= button_to "remove comment", note_url(note), method: :delete %>
+      <% end %>
+    </li>
+    <br>
+  <% end %>
+</ul>
+
+&#9835;
+<%= render "notes/form", track: @track %>
